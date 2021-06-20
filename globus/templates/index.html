@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Кино афиша кинотеатра "Глобус"{% endblock %}
+{% block header %}Кино афиша кинотеатра "Глобус"{% endblock %}
+{% block content %}
+  <div class="container">
+
+    {% for fils in films %}
+      {{ film.title }}
+      {{ film.genre }}
+      {{ film.trailer }}
+      {{ film.description }}
+      {{ film.mpaaa }}
+        {% if show_date %}
+            {% for show in show_date %}
+                {{ show.datetime  }}
+                {{ show.format  }}
+                {{ show.price  }}
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+
+  </div>
+{% endblock %}

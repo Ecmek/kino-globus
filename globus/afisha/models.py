@@ -1,50 +1,35 @@
+from django.utils import timezone
 from django.db import models
 
-from tinymce import models as tinymce_models
 
-class ShowTime(models.Model):
-    datetime = models.DateTimeField(
-        verbose_name='Дата показа',
-    )
-    price = models.PositiveIntegerField(
-        verbose_name='Цена билета',
-    )
-    format = models.CharField(
-        verbose_name='Формат показа',
-    )
-
-    class Meta:
-        ordering = ['datetime']
-        verbose_name = 'Время показа'
-        verbose_name_plural = 'Время показа'
-
-# TODO добавить постер к фильму
+# TODO РґРѕР±Р°РІРёС‚СЊ РїРѕСЃС‚РµСЂ Рє С„РёР»СЊРјСѓ
 class Cinema(models.Model):
-    title = models.CharField(
-        max_length=50, null=False,
-        verbose_name='Название ленты',
-    )
-    genre = models.CharField(
-        max_length=20,
-        verbose_name='Жанр ленты'
-    )
-    trailer = tinymce_models.HTMLField(
-        verbose_name='Вставка трейлера <iframe>',
-    )
-    description = models.TextField(
-        verbose_name='Описание ленты',
-    )
-    mpaa = models.CharField(
-        verbose_name='Возрастные ограничения',
-    )
-    show_date = models.ManyToManyField(
-        ShowTime,
-        verbose_name='время показа ленты',
-    )
+    title = models.CharField(max_length=50, null=False, verbose_name='РќР°Р·РІР°РЅРёРµ Р»РµРЅС‚С‹',)
+    genre = models.CharField(max_length=50, verbose_name='Р–Р°РЅСЂ Р»РµРЅС‚С‹')
+    duration = models.CharField(max_length=50, verbose_name='Р”Р»РёС‚РµР»СЊРЅРѕСЃС‚СЊ Р»РµРЅС‚С‹')
+    trailer = models.TextField(verbose_name='Р’СЃС‚Р°РІРєР° С‚СЂРµР№Р»РµСЂР° <iframe>',)
+    description = models.TextField(verbose_name='РћРїРёСЃР°РЅРёРµ Р»РµРЅС‚С‹',)
+    mpaa = models.CharField(max_length=10, verbose_name='Р’РѕР·СЂР°СЃС‚РЅС‹Рµ РѕРіСЂР°РЅРёС‡РµРЅРёСЏ',)
+    source = models.CharField(max_length=200, verbose_name='РЎСЃС‹Р»РєР° РЅР° РёСЃС‚РѕС‡РЅРёРє')
 
     class Meta:
-        verbose_name = 'Лента'
-        verbose_name_plural = 'Ленты'
+        verbose_name = 'Р›РµРЅС‚Р°'
+        verbose_name_plural = 'Р›РµРЅС‚С‹'
 
     def __str__(self):
         return self.title
+
+
+class ShowTime(models.Model):
+    datetime = models.DateTimeField(verbose_name='Р”Р°С‚Р° РїРѕРєР°Р·Р°',)
+    price = models.PositiveIntegerField(verbose_name='Р¦РµРЅР° Р±РёР»РµС‚Р°',)
+    format = models.CharField(max_length=10, verbose_name='Р¤РѕСЂРјР°С‚ Р»РµРЅС‚С‹',)
+    cinema = models.ForeignKey(Cinema, on_delete=models.CASCADE, verbose_name='Р›РµРЅС‚Р°', related_name='show_time')
+
+    class Meta:
+        ordering = ['datetime']
+        verbose_name = 'Р’СЂРµРјСЏ РїРѕРєР°Р·Р°'
+        verbose_name_plural = 'Р’СЂРµРјСЏ РїРѕРєР°Р·Р°'
+
+    def recentle_show(self):
+        return self.datetime >= timezone.now()

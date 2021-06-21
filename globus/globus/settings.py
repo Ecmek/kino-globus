@@ -25,9 +25,7 @@ SECRET_KEY = 'django-insecure-qmx+5%li+@q_u5_)80@v_o@h^(d(jydn94&5eidn_h!09@g1oi
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '88.147.152.83',
     '127.0.0.1',
-    '192.168.0.13',
 ]
 
 
@@ -56,7 +54,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'globus.urls'
 
-TEMPLATES_DIR = [BASE_DIR / 'templates']
+TEMPLATES_DIR = (BASE_DIR / 'templates')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -83,7 +81,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'kino_globus',
-        'USER': 'gerart',
+        'USER': 'gerartg',
         'PASSWORD': '_5tovmrxp',
         'HOST': 'localhost',
         'PORT': '',
@@ -128,7 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = [BASE_DIR / 'static']
+STATIC_ROOT = (BASE_DIR / 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

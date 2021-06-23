@@ -1,0 +1,26 @@
+<div class="card mb-2 shadow-sm">
+  <h3 class="card-header bg-dark text-white text-center">{{ film.title }}
+    {% if user.is_staff %}
+    <a class="btn btn-sm btn-primary" href="{% url 'edit_cinema' film.id %}" role="button">Редактировать</a>
+    {% endif %}
+  </h3>
+
+  <div class="row">
+    <div class="col-lg-4 col-md-12 col-sm-12 mx-2 mt-2">
+      {{ film.trailer|safe }}
+    </div>
+    <div class="card col-lg-2 col-md-12 col-sm-12 mx-2 mt-2">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Возраст: {{ film.mpaa }}</li>
+        <li class="list-group-item">Длительность: {{ film.duration }}</li>
+        <li class="list-group-item">Жанр: {{ film.genre }}</li>
+      </ul>
+    </div>
+    <div class="card col-lg-5 col-md-12 col-sm-12 mx-2 mt-2">
+      <div class="card-header bg-dark text-white text-center row">Краткий обзор</div>
+      <div class="card-body row">
+        {{ film.description }}
+      </div>
+        <small class="card-footer text-muted row">Источник:<a href='{{ film.source }}'>Кинопоиск</a></small>
+    </div>
+  </div>

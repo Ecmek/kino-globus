@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Киноафиша кинотеатра "Глобус"{% endblock %}
+{% block header %}Киноафиша кинотеатра "Глобус"{% endblock %}
+{% block content %}
+
+  {% include "includes/menu.html" with show_end=True %}
+
+  {% for film in page %}
+    {% include 'includes/film_item.html' %}
+  {% endfor %}
+
+  {% include "includes/paginator.html" with items=page paginator=paginator %}
+
+{% endblock %}

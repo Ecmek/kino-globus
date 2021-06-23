@@ -2,47 +2,22 @@
 {% block title %}Киноафиша кинотеатра "Глобус"{% endblock %}
 {% block header %}Киноафиша кинотеатра "Глобус"{% endblock %}
 {% block content %}
-<div class="container">
-  {% for film in films %}
-  <div class="card mb-2 shadow-sm">         
-    <h3 class="card-header bg-dark text-white text-center">{{ film.title }}</h3>
-    <div class="row">
-      <div class="col-md-4 mx-2 mt-2 row">
-        {{ film.trailer|safe }}
-      </div>
-      <div class="card col-md-2 mx-2 mt-2">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Возраст: {{ film.mpaa }}</li>
-          <li class="list-group-item">Длительность: {{ film.duration }}</li>
-          <li class="list-group-item">Жанр: {{ film.genre }}</li>
-        </ul>
-      </div>
-      <div class="card col-md-5 mx-2 mt-2 text-justify">
-        <div class="card-header bg-dark text-white text-center row">Краткий обзор</div>
-          {{ film.description }}
-        <small class="card-footer text-muted row">Источник:<a href='{{ film.source }}'>Кинопоиск</a></small>
-      </div>
-      </div>
-        <div class="container mb-2 mt-2">
+{% include "includes/menu.html" with index=True %}
+  {% for film in page %}
+    {% include 'includes/film_item.html' %}
+      <div class="container mb-2 mt-2">
         <div class="card shadow-sm">
-        <div class="card-header">Близжайшие сеансы</div>
-        <div class="row mx-1">
-          {% for show in film.show_time.all %}
-          {% if show.recentle_show %}
-            <div class="card col-md-2 mx-2 mt-2 mb-2 text-center">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item bg-light row">{{ show.datetime|date:"d.m в H:i"}}</li>
-                <li class="list-group-item row">Формат: {{ show.format }}</li>
-                <li class="list-group-item row">Цена: {{ show.price }}р</li>
-              </ul>
+          <div class="card-header">Cеансы</div>
+            <div class="row mx-1">
+              {% for session in film.show_time.all %}
+              {% if session.recentle_show %}
+                {% include 'includes/session_item.html' %}
+              {% endif %}
+              {% endfor %}
             </div>
-          {% endif %}
-          {% endfor %}
+          </div>
         </div>
       </div>
-      </div>
-    </div>
     {% endfor %}
-  </div>
-</div>
+    {% include "includes/paginator.html" with items=page paginator=paginator %}
 {% endblock %}

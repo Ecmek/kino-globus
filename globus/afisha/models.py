@@ -11,6 +11,7 @@ class Cinema(models.Model):
     description = models.TextField(verbose_name='Описание ленты',)
     mpaa = models.CharField(max_length=10, verbose_name='Возрастные ограничения',)
     source = models.CharField(max_length=200, verbose_name='Ссылка на источник')
+    on_screen = models.BooleanField(verbose_name='В прокате')
 
     class Meta:
         verbose_name = 'Лента'

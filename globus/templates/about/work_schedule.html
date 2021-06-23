@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Об авторе проекта{% endblock %}
+{% block content %}
+{% load static %}
+  <main role="main" class="container">
+    <div class="row justify-content-center">
+      <!-- Левый вспомогательный блок -->
+      <div class="col-md-6 mb-3 mt-1 align-self-center">
+        <div class="card">
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <div class="h3 text-center">
+                  Режим работы
+                </div> 
+              </li>
+              <li class="list-group-item">
+                <div class="h6 text-muted text-center">
+                  <h3>Рабочие дни</h3>
+                  с 09:00 до 21:00
+                  <p>Вт, Ср, Чт, Пт, Сб, Вс</p>
+                  <h3>Выходной день</h3>
+                  <p>Понедельник</p>
+                  <h3>Заказ билетов и бронь</h3>
+                    +7 986-989-40-45
+                  <h3>Адрес кинотеатра</h3>
+                    <p>Саратовская обл., г. Красноармейск, ул. 1 Мая д.61</p>
+                <h3>Расписание так же тут</h3>
+                  <p><a href="https://www.instagram.com/kino_globus/" target="_blank"><img class="icon" src='{% static "/media/instagram_icon.png" %}'
+                        alt='instagram'></a> instagram "Глобус"а</p>
+                </div>
+              </li>
+            </ul>                                               
+          </div>                    
+        </div>                
+      </div>
+  </main>
+{% endblock %}

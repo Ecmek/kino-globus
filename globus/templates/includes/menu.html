@@ -1,0 +1,14 @@
+<div class="row mx-auto">
+    <ul class="nav nav-tabs mx-auto">
+      <li class="nav-item">
+        <a class="nav-link {% if index %}active{% endif %}" href="{% url 'index' %}">
+          На экранах
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if show_end %}active{% endif %}" href="{% url 'show_end' %}">
+          Показ закончен
+        </a>
+      </li>
+    </ul>
+</div>

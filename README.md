@@ -42,3 +42,8 @@ python3 manage.py createsuperuser
 ```
 python3 manage.py runserver
 ```
+Авторизоваться на сайте:
+```
+/admin/login
+```
+После чего на главной странице, либо через админим панель можно добавить киноленты и сеасны к ним.

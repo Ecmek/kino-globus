@@ -31,9 +31,9 @@ python3 -m pip install --upgrade pip
 ```
 pip install -r requirements.txt
 ```
-Создать файл .env и заполнить согласно файла env_template.txt:
+В корневой папке создать файл .env и заполнить согласно файла env_template.txt:
 ```
-Если на вашем пк не установлна какая-либо сервер с БД, то DATABASES изменить как пример ниже:
+Если на вашем пк не установлн какой-либо сервер с БД, то DATABASES изменить на пример ниже:
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

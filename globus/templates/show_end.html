@@ -6,7 +6,9 @@
   {% include "includes/menu.html" with show_end=True %}
 
   {% for film in page %}
+  <div class="card mb-2 shadow-sm">
     {% include 'includes/film_item.html' %}
+  </div>
   {% endfor %}
 
   {% include "includes/paginator.html" with items=page paginator=paginator %}

@@ -3,7 +3,9 @@
 {% block header %}Киноафиша кинотеатра "Глобус"{% endblock %}
 {% block content %}
 {% include "includes/menu.html" with index=True %}
+
   {% for film in page %}
+  <div class="card mb-2 shadow-sm">
     {% include 'includes/film_item.html' %}
       <div class="container mb-2 mt-2">
         <div class="card shadow-sm">

@@ -22,7 +22,6 @@ from django.urls import include, path
 urlpatterns = [
     path('', include('afisha.urls')),
     path('admin/', admin.site.urls),
-    path('tinymce/', include('tinymce.urls')),
     path('auth/', include('django.contrib.auth.urls')),
     path('about/', include('about.urls')),
 ]

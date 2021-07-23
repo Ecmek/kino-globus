@@ -1,4 +1,4 @@
-<div class="card mb-2 shadow-sm">
+
   <h3 class="card-header bg-dark text-white text-center">{{ film.title }}
     {% if user.is_staff %}
     <a class="btn btn-sm btn-primary" href="{% url 'edit_cinema' film.id %}" role="button">Редактировать</a>
@@ -21,6 +21,7 @@
       <div class="card-body row">
         {{ film.description }}
       </div>
-        <small class="card-footer text-muted row">Источник:<a href='{{ film.source }}'>Кинопоиск</a></small>
+        <small class="card-footer text-muted row"><a href='{{ film.source }}'>Источник</a></small>
     </div>
   </div>
+

@@ -14,6 +14,7 @@ class Cinema(models.Model):
     on_screen = models.BooleanField(verbose_name='В прокате')
 
     class Meta:
+        ordering = ['title']
         verbose_name = 'Лента'
         verbose_name_plural = 'Ленты'
 

@@ -9,8 +9,16 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+import os
+from dotenv import load_dotenv
 
 from pathlib import Path
+
+load_dotenv()
+PROJECT_SECRET_KEY = os.getenv('PROJECT_SECRET_KEY')
+DATABASE_NAME = os.getenv('DATABASE_NAME')
+DATABASE_USER = os.getenv('DATABASE_USER')
+DATABASE_PASSWORD = os.getenv('DATABASE_PASSWORD')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,18 +27,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-qmx+5%li+@q_u5_)80@v_o@h^(d(jydn94&5eidn_h!09@g1oi'
+SECRET_KEY = PROJECT_SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
+    'kino-globus.ru',
+    'www.kino-globus.ru',
 ]
 
 INTERNAL_IPS = [
     # ...
-    '127.0.0.1',
+    #'127.0.0.1',
     # ...
 ]
 
@@ -45,7 +55,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'afisha.apps.AfishaConfig',
     'debug_toolbar',
-    'tinymce',
 ]
 
 MIDDLEWARE = [
@@ -89,12 +98,11 @@ WSGI_APPLICATION = 'globus.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'kino_globus',
-        'USER': 'gerartg',
-        'PASSWORD': '_5tovmrxp',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': DATABASE_NAME,
+        'USER': DATABASE_USER,
+        'PASSWORD': DATABASE_PASSWORD,
         'HOST': 'localhost',
-        'PORT': '',
     }
 }
 
